@@ -11,7 +11,7 @@ export default function Home({productos}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch('https://chillin.cl/api/productos')
   const data = await response.json()
   console.log("Data from ServerSide props", response);

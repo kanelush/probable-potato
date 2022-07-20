@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import { CartProvider } from '../context/CartContext'
 import { motion } from 'framer-motion'
 import { Navbar } from '../components/Navbar'
-
+import { Nav } from '../components/Nav'
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps, router }) {
   
    <CartProvider>
   <Navbar/>
+  {/* <Nav/> */}
   <motion.div key={router.route} initial='pageInitial' animate='pageAnimate' variants={{
     pageInitial: {
       opacity:0,
