@@ -15,7 +15,7 @@ export const Landing = ({productos}) => {
       <h1 className="title-font text-2xl font-bold text-gray-700 mb-6 text-center pb-8">Puerto Montt, Chile</h1>
         <div className="flex flex-wrap -m-4">
           {productos.filter((producto)=> producto.name.toLowerCase().includes(val)).map((producto, i) => {return <>
-          <motion.div key={producto.id} initial='first' animate='last' transition={{duration:0.3, delay: i *0.1}} className="p-4 md:w-1/3" whileHover={{
+          <motion.div key={producto.id} initial='first' animate='last' transition={{duration:0.3, delay: i *0.1}} className="p-4 w-1/2 md:w-1/3" whileHover={{
             position:'relative',
             zIndex: 1,
             transition: {

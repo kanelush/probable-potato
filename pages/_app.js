@@ -3,6 +3,7 @@ import { CartProvider } from '../context/CartContext'
 import { motion } from 'framer-motion'
 import { Navbar } from '../components/Navbar'
 import { Nav } from '../components/Nav'
+import { Menu } from '../components/Menu'
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -30,6 +31,7 @@ function MyApp({ Component, pageProps, router }) {
   <Component {...pageProps} />
   
   </motion.div>
+  <Menu/>
   </CartProvider>
    </>
    )
