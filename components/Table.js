@@ -45,11 +45,7 @@ export const Table = () => {
             console.log("Cart_ship data", cart_ship);
           });
           
-          // console.log("This is data GET to api", Object.values(data)[data.length - 1]);
-          // console.log("Log DAta.----->", Object.values(data)[0].url);
-          // console.log("Log DAta TOKEN.----->", Object.values(data)[0].url);
-          // window.location.href = Object.values(data)[0].url;
-          // window.location.href = resp.data.url
+    
           
         })
         .catch((err) => {
@@ -59,37 +55,7 @@ export const Table = () => {
       ])
     }, [totalPrice])
             
-    // const handlePay = () => {
-      
-    //   setTotal(totalPrice)
-    //   console.log("Total,,,->", total);
-      
-    //   // if (total){
-    //   //   axios.all([
-    //   //     axios.post(url, {'total_price': totalPrice})
-    //   //     .then(axios.get(url))
-    //   //     .then((resp) => {
-    //   //       console.log("This is resp GET post to api", resp);
-    //   //       respo = resp.data
-    //   //       setData(respo)
-    //   //       console.log("From const", respo);
-    //   //       console.log("This is data", respo.url);
-            
-    //   //       // console.log("This is data GET to api", Object.values(data)[data.length - 1]);
-    //   //       // console.log("Log DAta.----->", Object.values(data)[0].url);
-    //   //       // console.log("Log DAta TOKEN.----->", Object.values(data)[0].url);
-    //   //       // window.location.href = Object.values(data)[0].url;
-    //   //       // window.location.href = resp.data.url
-            
-    //   //     })
-    //   //     .catch((err) => {
-    //   //       console.log("Err: ",err.response);
-    //   //     })
-          
-    //   //   ])
-    //   // }
-      
-    // }
+  
 
   return (
     <div>

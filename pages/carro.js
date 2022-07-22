@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import CartContext from '../context/CartContext'
 import Link from 'next/link'
 import { Table } from '../components/Table'
-
+import { Resumen } from '../components/Resumen'
 
 
 //Carro Page component> 
@@ -12,9 +12,13 @@ const Carro = () => {
   
   return (
     <>
-    <div className="container bg-slate-200 py-20">
+    <Resumen/>
+    {/* <div className="container py-20">
+
         <Table/>
-       </div>
+        
+       </div> */}
+       
     </>
 
   )
