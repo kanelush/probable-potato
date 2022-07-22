@@ -45,10 +45,10 @@ export const Resumen = () => {
     
   
 <div className="mt-6  2xl:w-full  ml-0  mb-8 2xl:ml-24 grid-cols-1 2xl:flex">
-  <div className="  bg-slate-50 rounded-md  sm:-mx-6 lg:-mx-8 2xl:ml-12 2xl:flex-1">
+  <div className="  bg-slate-50 rounded-md  sm:-mx-6 lg:-mx-8 2xl:ml-12 2xl:flex-1 2xl:">
     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
       <div className="overflow-hidden 2xl:mx-12">
-        <h1 classNameName='font-bold text-2xl 2xl:p-4'>Tus Productos</h1>
+        <h1 className='font-bold text-2xl 2xl:p-4'>Tus Productos</h1>
         <table className="min-w-full">
           <thead className="border-t">
             <tr>
@@ -76,22 +76,22 @@ export const Resumen = () => {
                     <>
                     <tr className="border-b">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-l">
-                    <img height="120" width="120" alt="ecommerce" classNameName="hover:scale-105 transition-all rounded border border-gray-200" src={`https://chillin.cl${item.image}`} />
+                    <img height="120" width="120" alt="ecommerce" className="hover:scale-105 transition-all rounded border border-gray-200" src={`https://chillin.cl${item.image}`} />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {item.name}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <button classNameName={`px-2 mx-1 bg-emerald-100 rounded-lg`} onClick={() => handleCartInc(item)}>+</button>
+                        <button className={`px-2 mx-1 bg-emerald-100 rounded-lg`} onClick={() => handleCartInc(item)}>+</button>
                       {item.quantity}
-                      <button classNameName='px-2 mx-1 bg-red-100 rounded-lg' onClick={() => handleCartDec(item)}>-</button>
+                      <button className='px-2 mx-1 bg-red-100 rounded-lg' onClick={() => handleCartDec(item)}>-</button>
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {item.price}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
                       ${item.quantity * item.price}
-                      <button classNameName='px-2 m-x bg-red-100 rounded-lg' onClick={() => removeHandler(item)}>x</button>
+                      <button className='px-2 m-x bg-red-100 rounded-lg' onClick={() => removeHandler(item)}>x</button>
                     </td>
                     </tr>
                     </>
@@ -104,11 +104,11 @@ export const Resumen = () => {
       </div>
     </div>
   </div>
-  <div classNameName='mt-10  2xl:flex-1 2xl:mt-0 2xl:ml-12 2xl:flex-1'>
-    <div classNameName=' bg-blue-50 rounded-md w-1/2 h-64'>
-       <h1 classNameName='font-bold text-2xl p-4'> Resumen del Pedido</h1>
-       <h2 classNameName='text-xl my-4 p-4'>Total del Pedido: ${totalPrice}</h2>
-       <Link href="/continuar"><span classNameName='mx-2 p-2 bg-emerald-100 hover:cursor-pointer'>Continuar compra</span></Link>
+  <div className='mt-10  2xl:flex-1 2xl:mt-0 2xl:ml-12'>
+    <div className=' bg-blue-50 rounded-md w-1/2 h-64'>
+       <h1 className='font-bold text-2xl p-4'> Resumen del Pedido</h1>
+       <h2 className='text-xl my-4 p-4'>Total del Pedido: ${totalPrice}</h2>
+       <Link href="/continuar"><span className='mx-2 p-2 bg-emerald-100 hover:cursor-pointer'>Continuar compra</span></Link>
     </div>
        
   </div>

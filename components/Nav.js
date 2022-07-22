@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react'
 import React from 'react'
-import Dropdown from './DropDown'
+import Dropdown from './Dropdown'
 import { Transition,  } from '@headlessui/react'
 import { Fragment } from 'react'
 import Cart from './Cart'

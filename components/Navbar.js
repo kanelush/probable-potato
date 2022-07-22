@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from 'next/image';
 import CartContext from '../context/CartContext';
 import Cart from './Cart';
-import Dropdown from './DropDown';
+import Dropdown from './Dropdown';
 
 
 export const Navbar = () => {
@@ -41,7 +41,7 @@ return (
       <Link href="/servicios">
         <a href="" onClick={() => setTurnonn(false)} className="cursor-pointer block py-4 pr-4 pl-3 text-black border-b  hover:border-black" aria-current="page">Servicio</a>
       </Link>
-      <Link href="/contact">
+      <Link href="/contacto">
         <a href="" onClick={() => setTurnonn(false)} className="cursor-pointer block py-4 pr-4 pl-3 text-black border-b  hover:border-black" aria-current="page">Contacto</a>
       </Link>
       <Link href="/advertising">
