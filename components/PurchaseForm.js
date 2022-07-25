@@ -2,8 +2,8 @@ import React from 'react'
 import { useContext, useState, useEffect } from 'react'
 import CartContext from '../context/CartContext'
 
-const PurchaseForm = () => {
-  const { items } = useContext(CartContext)
+const PurchasehtmlForm = () => {
+  const { items} = useContext(CartContext)
 
   const totalPrice = items.reduce((total, item) =>{
     return total + item.price * item.quantity
@@ -26,7 +26,7 @@ const PurchaseForm = () => {
 						<form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
 							<div className="mb-4 md:flex md:justify-between">
 								<div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="firstName">
 										Email
 									</label>
 									<input
@@ -37,7 +37,7 @@ const PurchaseForm = () => {
 									/>
 								</div>
 								<div className="md:ml-2">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="lastName">
 										Telefono
 									</label>
 									<input
@@ -50,7 +50,7 @@ const PurchaseForm = () => {
 							</div>
               <div className="mb-4 md:flex md:justify-between">
 								<div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="firstName">
 										Nombre
 									</label>
 									<input
@@ -61,7 +61,7 @@ const PurchaseForm = () => {
 									/>
 								</div>
 								<div className="md:ml-2">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="lastName">
 										Apellido
 									</label>
 									<input
@@ -73,7 +73,7 @@ const PurchaseForm = () => {
 								</div>
 							</div>
 							<div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="email">
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
 									Dirección
 								</label>
 								<input
@@ -85,7 +85,7 @@ const PurchaseForm = () => {
 							</div>
 							<div className="mb-4 md:flex md:justify-between">
 								<div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="password">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
 										Ciudad
 									</label>
 									<input
@@ -97,7 +97,7 @@ const PurchaseForm = () => {
 									
 								</div>
 								<div className="md:ml-2">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="c_password">
+									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="c_password">
 										Región
 									</label>
 									<input
@@ -109,8 +109,8 @@ const PurchaseForm = () => {
 								</div>
 							</div>
               <div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="email">
-									Información Adicional
+								<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
+									InhtmlFormación Adicional
 								</label>
 								<textarea
 									className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -142,4 +142,4 @@ const PurchaseForm = () => {
   )
 }
 
-export default PurchaseForm;
+export default PurchasehtmlForm;
