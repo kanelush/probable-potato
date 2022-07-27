@@ -12,7 +12,7 @@ export const Resumen = () => {
     }, 0)
 
     const [total, setTotal] = useState()
-    const url = 'http://127.0.0.1:8000/api/cart'
+    const url = 'https://chillin.cl/api/cart'
     let respo;
     let cart_ship = [];
     const [data, setData] = useState()
