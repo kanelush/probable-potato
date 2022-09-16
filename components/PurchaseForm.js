@@ -4,7 +4,7 @@ import CartContext from '../context/CartContext'
 import axios from 'axios'
 
 const PurchaseForm = () => {
-  const { items} = useContext(CartContext)
+  const { items, id} = useContext(CartContext)
 
   const [mail, setMail] = useState('')
   const [telefono, setTelefono] = useState('')
@@ -20,59 +20,33 @@ const PurchaseForm = () => {
   let respo;
   let latest_added;
 
-  const url = 'https://chillin.cl/api/cart'
+  const url = 'https://crypton.cl/api/cart/' + id
+  console.log("This is url---->", url);
   
 
-//   useEffect(() => {
 
-// 	const datos = {name, mail,last_name:lastName, telefono, direccion, info};
-//     console.log(datos)
-
-//     axios
-//       .post('http://127.0.0.1:8000/api/purchasedata', datos)
-//       .then((resp) => {
-//       console.log(resp);      
-//       })
-//       .catch((err) => {
-//       console.log(err);
-// 	  return false
-//       });
-//       console.log("added!")
-	 
-//     //  setName('')
-//     //  setMail('')
-//     //  setInfo('')
-//     //  setLastName('')
-//     //  setTelefono('')
-//     //  setDireccion('')
-//   }, [full])
   useEffect(()=> {
 	axios.get(url).then((resp) => {
 		respo = resp.data
 		setData(respo)
-		console.log("puede ser--->",respo);
+		console.log("puede ser--->",respo.url);
 		console.log("puede florece el dinero--->",respo.length);
 		
 	}).catch((err) => {
 		console.log("Err: ",err.response);
 	  })
   }, [])
-  if (data){
-	// console.log("Data-->", data[0].url);
-	latest_added = data[data.length-1]
-	
-
-	console.log("This is required value--->", latest_added);
-  }
+  
   console.log("email", mail);
+//   console.log("this is data --->", data.session_id);
 
   const handleSubmit = (e) => {
 	// e.preventDefault()
-    const datos = {name, mail,last_name:lastName, telefono, direccion, info};
+    const datos = {name, mail,last_name:lastName, telefono, direccion, info, 'items':[items], total_price:totalPrice, buy_order:data.buy_order, session_id:data.session_id};
     console.log(datos)
 
     axios
-      .post('https://chillin.cl/api/purchasedata', datos)
+      .post('https://crypton.cl/api/purchasedata', datos)
       .then((resp) => {
       console.log(resp);
 	  document.getElementById("yoyo").submit();
@@ -87,15 +61,7 @@ const PurchaseForm = () => {
       });
       console.log("added!")
 
-	// console.log("yoyo",document.getElementById("yoyo"));
 	
-
-    //  setName('')
-    //  setMail('')
-    //  setInfo('')
-    //  setLastName('')
-    //  setTelefono('')
-    //  setDireccion('')
 }
 
 
@@ -105,7 +71,7 @@ const PurchaseForm = () => {
 
 
   return (
-    <body className="">
+
 
 		<div className="container lg:flex">
     
@@ -119,7 +85,7 @@ const PurchaseForm = () => {
 					<div className="w-full lg:w-full bg-slate-200 p-5 rounded-lg justify-center lg:flex-1">
           
 						<h3 className="pt-4 text-2xl text-center">Datos de Envio</h3>
-						{data && latest_added && <form id='yoyo' className="px-8 pt-6 pb-8 mb-4 bg-white rounded" method='post' action={latest_added.url}>
+						{data && <form id='yoyo' className="px-8 pt-6 pb-8 mb-4 bg-white rounded" method='post' action={data.url}>
 							<div className="mb-4 md:flex md:justify-between">
 								<div className="mb-4 md:mr-2 md:mb-0">
 									<label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="firstName">
@@ -222,7 +188,7 @@ const PurchaseForm = () => {
 								/>
 							</div>
 							<div className="mb-6 text-center">
-							<input type="hidden" name="token_ws"  value={latest_added.token} />
+							<input type="hidden" name="token_ws"  value={data.token} />
 								<button
 									className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
 									type="button"
@@ -243,9 +209,10 @@ const PurchaseForm = () => {
       <div className='my-12 bg-blue-50 rounded-md w-full h-64 lg:flex-1'>
             <h1 className='font-bold text-2xl p-4'> Resumen del Pedido</h1>
             <h2 className='text-xl my-4 p-4'>Total del Pedido: ${totalPrice}</h2>
+			{items.map((item)=>{return (<><h1>{item.name}</h1><p>{item.quantity}</p></>)})}
         </div>
 		</div>
-	</body>
+
   )
 }
 

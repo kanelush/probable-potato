@@ -4,52 +4,85 @@ import CartContext from '../context/CartContext'
 import axios from 'axios'
 import Link from 'next/link'
 
-export const Resumen = () => {
-    const { items, handleCartInc, handleCartDec, removeHandler  } = useContext(CartContext)
+const Resumen = () => {
+    const { items, handleCartInc, handleCartDec, removeHandler, id, setId  } = useContext(CartContext)
 
+    const [dataput, setDataput] = useState([])
+
+    let vari;
     const totalPrice = items.reduce((total, item) =>{
       return total + item.price * item.quantity
     }, 0)
 
-    const [total, setTotal] = useState()
-    const url = 'https://chillin.cl/api/cart'
-    let respo;
-    let cart_ship = [];
-    const [data, setData] = useState()
+
+    const url = 'https://crypton.cl/api/cart'
+
 
     useEffect(() =>{
-      axios.all([
+
         axios.post(url, {'total_price': totalPrice})
-        .then(axios.get(url))
         .then((resp) => {
-          respo = resp.data
-          setData(respo)
-          items.forEach(item => {
-            if (cart_ship.includes(item)){
-              console.log("Existe!!");
-            } else {
-              cart_ship.push(item)
-            }
-          });
+          console.log("Resp from cart", resp);
+          console.log("Resp from id", resp.data.id);
+          setId(resp.data.id)
           
-    
+          
+          
           
         })
         .catch((err) => {
           console.log("Err: ",err.response);
         })
-        
-      ])
-    }, [totalPrice])
-  return (
-    
+
   
-<div className="mt-6  2xl:w-full  ml-0  mb-8 2xl:ml-24 grid-cols-1 2xl:flex">
+        
+    }, [])
+
+    useEffect(() =>{
+        if(id){
+          const url1 = 'https://crypton.cl/api/cart/' + id
+          console.log("url1!-->", url1);
+          const options = {
+            headers: {"content-type": "application/json"}
+          }
+          axios.all([
+            axios.get(url1).then((resp)=> {
+              vari=resp.data
+              setDataput(vari)
+              console.log("Dataput & setVari", vari);
+            
+            })
+            
+            .then(()=> {
+              
+              if(dataput){
+                axios.put(url1, {'id':id,'total_price': totalPrice, 'url':dataput.url, 'buy_order':dataput.buy_order, 'session_id':dataput.session_id }, options)
+              }
+            })
+              
+              .catch((e)=>console.log(e))])
+          // axios.put(url1, {'id':id,'total_price': totalPrice }, options)
+          // axios.get(url1).then((resp)=>console.log("peude ser:",resp.data.url)).then(
+          //   () => axios.put(url1, {'id':id,'total_price': totalPrice, 'url':resp.data.url }, options)
+          // ).catch((e)=> console.log("error-->", e))
+          
+        }
+        
+        
+    }, [totalPrice])
+    
+
+  return (
+    <>
+
+  
+{items.length > 0 
+?  <div className="mt-6  2xl:w-full  ml-0  mb-8 2xl:ml-24 grid-cols-1 2xl:flex">
   <div className="  bg-slate-50 rounded-md  sm:-mx-6 lg:-mx-8 2xl:ml-12 2xl:flex-1 2xl:">
     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
       <div className="overflow-hidden 2xl:mx-12">
         <h1 className='font-bold text-2xl 2xl:p-4'>Tus Productos</h1>
-        <table className="min-w-full">
+        <table className="bg-red-500 sm:w-1/4 lg:min-w-full">
           <thead className="border-t">
             <tr>
               <th scope="col" className="text-sm font-medium text-gray-900 2xl:px-6 2xl:py-4 text-left border-y border-l">
@@ -74,9 +107,9 @@ export const Resumen = () => {
                 {items.map((item) => {
                     return(
                     <>
-                    <tr className="border-b">
+                    <tr key={item.id} className="border-b">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-l">
-                    <img height="120" width="120" alt="ecommerce" className="hover:scale-105 transition-all rounded border border-gray-200" src={`https://chillin.cl${item.image}`} />
+                    <img height="120" width="120" alt="ecommerce" className="hover:scale-105 transition-all rounded border border-gray-200" src={`https://crypton.cl${item.image}`} />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {item.name}
@@ -112,7 +145,10 @@ export const Resumen = () => {
     </div>
        
   </div>
-</div>
-    
+</div> 
+: <h1>Tu carro esta vacio</h1> }
+</>   
   )
 }
+
+export default Resumen;

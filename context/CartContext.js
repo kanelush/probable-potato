@@ -5,6 +5,7 @@ const CartContext = createContext();
 export function CartProvider({children}){
     //main payload
     const [items, setItems] = useState([]);
+    const [id, setId] = useState()
 
     // quantity of payload.price
     const [quantity, setQuantity] = useState(1)
@@ -97,7 +98,7 @@ export function CartProvider({children}){
     }
 
     return (
-        <CartContext.Provider value={{ removeHandler, quanty, setQuanty, handleCartDec, handleCartInc,items, addToCart, quantity, setQuantity, sumArr, handleDecrement, handleIncrement, clicked, setClicked}}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ removeHandler, quanty, setQuanty, handleCartDec, handleCartInc,items, addToCart, quantity, setQuantity, sumArr, handleDecrement, handleIncrement, clicked, setClicked, id, setId}}>{children}</CartContext.Provider>
     )
 }
 export default CartContext;

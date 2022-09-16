@@ -1,4 +1,4 @@
-import { Fragment, useContext, useRef, useState } from 'react'
+import { Fragment, useContext, useEffect, useRef, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Cart from './Cart'
@@ -11,6 +11,11 @@ function classNames(...classes) {
 export default function Dropdown() {
   const { items } = useContext(CartContext) 
   const ref = useRef(null)
+
+  useEffect(()=> {
+    var url = window.location;
+    console.log("CURR URL--->", url);
+  },[])
  
 
   return (

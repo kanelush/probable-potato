@@ -7,13 +7,14 @@ export const Landing = ({productos}) => {
   const [val, setVal] = useState('')
   return (
     <section className="text-gray-600 body-font">
-      <div className="border-solid mt-8 mx-24 w-1/3 border-4 p-4">
+      {/* <div className="border-solid mt-8 mx-24 w-1/3 border-4 p-4">
         <input className="" value={val} onChange={(e) => setVal(e.target.value) } placeholder='Buscar producto...'/>
-        </div>
-      <div className="container px-5 py-20 mx-auto">
-      <h1 className="title-font text-4xl font-bold text-gray-700 mb-6 text-center">High Quality Parafernalia!</h1>
-      <h1 className="title-font text-2xl font-bold text-gray-700 mb-6 text-center pb-8">Puerto Montt, Chile</h1>
+        </div> */}
+      <div className="container px-5 pt-10 pb-20 mx-auto">
+      <h1 className="title-font text-4xl font-semibold  mb-6 text-center text-orange-400  ">Lentes de Sol</h1>
+      {/* <h1 className="title-font text-2xl font-bold text-gray-700 mb-6 text-center pb-8">Puerto Montt, Chile</h1> */}
         <div className="flex flex-column flex-wrap -m-4 h-1/3">
+          {/* function first filters the data then maps through it */}
           {productos.filter((producto)=> producto.name.toLowerCase().includes(val)).map((producto, i) => {return <>
           <motion.div key={producto.id} initial='first' animate='last' transition={{duration:0.3, delay: i *0.1}} className="p-4 w-1/2 md:w-1/3" whileHover={{
             position:'relative',
@@ -32,7 +33,7 @@ export const Landing = ({productos}) => {
           <div className="h-full flex-1 rounded-xl shadow-cla-blue bg-gradient-to-r from-indigo-50 to-blue-50 overflow-hidden">
             
          <Link href="/detail/[id]" as={`/detail/${producto.id}`}>
-            <img className="lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src={`https://chillin.cl/${producto.image}`} alt="blog"/>
+            <img className="lg:h-48 md:h-36 w-full object-cover object-center scale-90 transition-all duration-400 hover:scale-100" src={`https://crypton.cl${producto.image}`} alt="blog"/>
             </Link>
             <div className="p-6">
               <h1 className="title-font text-lg font-medium text-gray-600 mb-3">{ producto.name }</h1>
